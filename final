@@ -1,65 +1,65 @@
-#include <iostream>//библиотека ввода-вывода
-#include <fstream>//работа с файлами
-#include <stdlib.h>//функции для работы с памятью, числами и строками.
+#include <iostream>
+#include <fstream>
+#include <stdlib.h>
 
-using namespace std;//использование пространства имен стандартной библиотеки
+using namespace std;
 
-class Balance {//Объявление класса Balance.
+class Balance {
     public:
-    int balance;//Объявление переменной balance типа int внутри класса Balance
-    Balance(int balance) {//Конструктор класса Balance, который принимает аргумент типа int и инициализирует переменную balance
+    int balance;
+    Balance(int balance) {
         this->balance = balance;
     }
 };
 
     
-class User{//Объявление класса User
+class User{
     public:
-    string name;//Объявление переменной name типа string внутри класса User
-    int id, balance;//Объявление переменных id и balance типа int внутри класса User
-    User (string name, int id) {//Конструктор класса User, который принимает аргументы типа string и int и инициализирует переменные name и id. Значение переменной balance устанавливается равным 5000.
+    string name;
+    int id, balance;
+    User (string name, int id) {
         balance = 5000;
         this->id = id;
         this->name = name;
     }
 }; 
     
-class Consuption{//Объявление класса Consuption
+class Consuption{
     public: 
-    int sum;//Объявление переменной sum типа int внутри класса Consuption
-    int id;//Объявление переменной id типа int внутри класса Consuption
-    Consuption (int sum, int userid) {//Конструктор класса Consuption, который принимает аргументы типа int и инициализирует переменные sum и id
+    int sum;
+    int id;
+    Consuption (int sum, int userid) {
         this->sum = sum;
         this->id = id;
     }
 };
-ofstream out;//Создание объекта класса ofstream для записи данных в файл
-int n1, n2, i, s, b=1, v, p, p2;//Объявление переменных типа int.
-double x;//Объявление переменной x типа double
-int main ()//главная функция
+ofstream out;
+int n1, n2, i, s, b=1, v, p, p2;
+double x;
+int main ()
 {
 
-    cout<<"пополнить баланс 1 на сумму: ";//вывод сообщения пользователю
-    cin>>p;//Считывание введенного значения суммы в переменную p
-    out.open("пополнение.txt");//Открытие файла
-    if (out.is_open())//Проверка, открыт ли файл
+    cout<<"пополнить баланс 1 на сумму: ";
+    cin>>p;
+    out.open("пополнение.txt");
+    if (out.is_open())
     {
         out<<"пополнение 1 баланса = "<<p<<"\n";
     }
-    out.close();//Закрытие файла
+    out.close();
     
     
-    cout << "ведите количество месецов трат для 1 баланса но неболше 12\n";//вывод сообщения пользователю
-    cin >> n1;//Считывание введенного значения количества месяцев в переменную n1
-    if(n1>12){// Проверка, является ли значение переменной n1 больше 12
-        cout << "тычё дурак шоль";//Вывод строки на экран
-        return 0;//Завершение работы
+    cout << "ведите количество месецов трат для 1 баланса но неболше 12\n";
+    cin >> n1;
+    if(n1>12){
+        cout << "тычё дурак шоль";
+        return 0;
     };
-    int* consuption = (int*)calloc(n1, sizeof(int));//Выделение памяти для указателя consuption размером n1 * sizeof(int)Выделение памяти для указателя balanse размером b * sizeof(int)
-    int* balanse = (int*)calloc(b, sizeof(int));//Выделение памяти для указателя balanse размером b * sizeof(int)
+    int* consuption = (int*)calloc(n1, sizeof(int));
+    int* balanse = (int*)calloc(b, sizeof(int));
     
-    for(i=1; i<b+1; i++){//цикл
-    cout<<"введите общие траты 1 категории трат "<<"но не больше "<<p<<" = ";//вывод сообщения пользователю
+    for(i=1; i<b+1; i++){
+    cout<<"введите общие траты 1 категории трат "<<"но не больше "<<p<<" = ";
     cin>> balanse[i-1];
     };
     
@@ -67,7 +67,7 @@ int main ()//главная функция
         
     }
     for(i=1; i<n1+1; i++){
-     cout<<"введите траты месяца "<<i<<":";//вывод сообщения пользователю
+     cout<<"введите траты месяца "<<i<<":";
     cin>> consuption[i-1];
     *balanse=*balanse+consuption[i-1];
     };
@@ -99,7 +99,7 @@ int main ()//главная функция
             out<<"процнты по этому "<<i+1<<" месецу от всех месечныйх трат"<<"= "<<v<<"%\n";
             }
     }
-    out.close();//Закрытие файла
+    out.close();
     p=p-*balanse;
     
 
@@ -113,7 +113,7 @@ int main ()//главная функция
     {
         out<<"пополнение 2 баланса = "<<p2;
     }
-    out.close();//Закрытие файла
+    out.close();
     
     cout << "ведите  количество месецов трат для 2 баланса но неболше 12\n";//вывод сообщения пользователю
     cin >> n2;
